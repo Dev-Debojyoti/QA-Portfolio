@@ -1,13 +1,20 @@
 Postman Token-based Authentication Mini-Project
 
-
-A hands-on guide to mastering API chaining and token-based authentication (OAuth 2.0/Bearer) in Postman. This project demonstrates how to automate secure API workflows by extracting and reusing authentication tokens dynamically.
-
+=====================================================
 
 
+
+This project demonstrates how to automate secure API workflows by extracting and reusing authentication tokens dynamically.
+
+
+
+
+
+========================================================================
 
 
 🚀 Key Learning Outcomes
+
 
 Environment Setup: Configure global and environment variables (e.g., baseUrl) for cleaner API management.
 
@@ -29,8 +36,12 @@ Workflow Execution: Run an entire authenticated sequence seamlessly using the Po
 
 
 
+========================================================================
+
 
 🛠️ Resources \& Tech Stack
+
+
 
 Demo API: reqres.in
 
