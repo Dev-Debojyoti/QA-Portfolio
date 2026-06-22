@@ -1,0 +1,158 @@
+{
+  "info": {
+    "_postman_id": "122a57d2-4288-4508-ab53-eb2a45ccf4a8",
+    "name": "Reqres.in -- Token-based Auth (OAuth 2.0/Bearer) for API Testing",
+    "description": "This collection demonstrates **token-based authentication** (OAuth 2.0 / Bearer Token) using the public [Reqres.in](https://reqres.in) API as a test target. It is designed to showcase a realistic, end-to-end authentication workflow for API testing purposes.\n\n## Workflow Overview\n\nThe collection contains two requests executed in sequence:\n\n1. **Login New User** (`POST /api/login`)\n   Authenticates a user against the Reqres.in login endpoint. On a successful response, the Bearer token returned in the response body is automatically extracted and stored in the active environment variable, making it available for subsequent requests without any manual intervention.\n\n2. **Get Users** (`GET /api/users?page=2`)\n   Retrieves a paginated list of users from the server. This request uses the Bearer token stored in the environment (obtained from the login step) and passes it in the `Authorization` header, demonstrating how authenticated requests are chained together in a collection run.\n\n## Key Concepts Covered\n\n- Automating token extraction from a login response and persisting it to an environment variable\n- Passing a Bearer token via the `Authorization` header in downstream requests\n- Using environment variables (`{{baseUrl}}`) to keep the collection portable across different environments (QA, Staging, etc.)\n- End-to-end API testing flow using Reqres.in as a mock backend\n\n## How to Use\n\n1. Select the appropriate environment (e.g., **QA** or **Staging**) that has `baseUrl` configured.\n2. Run the collection using the **Collection Runner** — the login request will execute first, store the token, and the Get Users request will automatically use it.\n3. Optionally, add test scripts to validate response status codes, token presence, and user data structure.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39290336",
+    "_collection_link": "https://go.postman.co/collection/39290336-122a57d2-4288-4508-ab53-eb2a45ccf4a8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Login new user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();\r",
+              "pm.environment.set(\"token\", response.token);\r",
+              "console.log(\"Token saved successfully !!\", response.token);\r",
+              "\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 500ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "login"
+          ]
+        },
+        "description": "Login new user and get token from response and store it it to environment and use it in next api call"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Users",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// Generate current timestamp",
+              "const timestamp = new Date().toISOString();",
+              "",
+              "// Set timestamp as environment variable",
+              "pm.environment.set(\"timestamp\", timestamp);",
+              "",
+              "console.log(\"The timestamp is : \", timestamp);",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users?page=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            }
+          ]
+        },
+        "description": "It will retrieve data from server and we also need to pass the bearer token in Authorization which we previously store it in environment which we got response after hitting login api."
+      },
+      "response": []
+    }
+  ]
+}

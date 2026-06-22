@@ -3,17 +3,22 @@ Postman Token-based Authentication Mini-Project
 =====================================================
 
 
+🚀 You can view the fully detailed, interactive API documentation, including request structures, header requirements, and expected response payloads here: 
+
+https://documenter.getpostman.com/view/39290336/2sBXwvL9aN
+
+
 
 This project demonstrates how to automate secure API workflows by extracting and reusing authentication tokens dynamically.
-
-
 
 
 
 ========================================================================
 
 
+
 🚀 Key Learning Outcomes
+
 
 
 Environment Setup: Configure global and environment variables (e.g., baseUrl) for cleaner API management.
@@ -37,6 +42,7 @@ Workflow Execution: Run an entire authenticated sequence seamlessly using the Po
 
 
 ========================================================================
+
 
 
 🛠️ Resources \& Tech Stack
