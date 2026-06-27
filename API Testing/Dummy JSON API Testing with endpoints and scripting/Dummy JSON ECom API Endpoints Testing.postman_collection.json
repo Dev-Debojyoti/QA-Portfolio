@@ -1,0 +1,2115 @@
+{
+  "info": {
+    "_postman_id": "99ea1c58-4f61-472d-a1a3-f35a69ac9c4a",
+    "name": "Dummy JSON ECom API Endpoints Testing",
+    "description": "ECom API Testing project using Dummyjson free public api..",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39290336",
+    "_collection_link": "https://go.postman.co/collection/39290336-99ea1c58-4f61-472d-a1a3-f35a69ac9c4a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Introduction",
+      "item": [
+        {
+          "name": "Test Route",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Positive Test Cases\r",
+                  "\r",
+                  "const api_response = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Status should be 200\", () => {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response status returned by the request should be ok\", () => {\r",
+                  "    pm.expect(api_response.status).to.eql(\"ok\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response method returned by the request should be GET\", () => {\r",
+                  "    pm.expect(api_response.method).to.eql(\"GET\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "// Negative Test Cases\r",
+                  "\r",
+                  "// pm.test(\"Status should be 201\", () => {\r",
+                  "//     pm.expect(pm.response.code).to.eql(201);\r",
+                  "// })\r",
+                  "\r",
+                  "\r",
+                  "// pm.test(\"Response status returned by the request should be ok\", () => {\r",
+                  "//     pm.expect(api_response.status).to.eql(\"OK\");\r",
+                  "// })\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "// pm.test(\"Response method returned by the request should be GET\", () => {\r",
+                  "//     pm.expect(api_response.method).to.eql(\"POST\");\r",
+                  "// })"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/test",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "test"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "IP Address",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/ip",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "ip"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Mock HTTP",
+      "item": [
+        {
+          "name": "Mock HTTP Response",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Positive Test Cases\r",
+                  "\r",
+                  "const api_response = pm.response.json();\r",
+                  "\r",
+                  "// pm.test(\"Status code returned by the request should be 200\", () => {\r",
+                  "//     pm.expect(pm.response.code).to.eql(200);\r",
+                  "// })\r",
+                  "\r",
+                  "\r",
+                  "// pm.test(\"Response status returned after hitting the request endpoint should be 200\", () => {\r",
+                  "//     pm.expect(api_response.status).to.eql(200);\r",
+                  "// })\r",
+                  "\r",
+                  "// pm.test(\"Response Message returned after hitting the request endpoint should be OK\", () => {\r",
+                  "//     pm.expect(api_response.message).to.eql(\"OK\");\r",
+                  "// })\r",
+                  "\r",
+                  "\r",
+                  "// Negative Test Cases\r",
+                  "\r",
+                  "pm.test(\"Status code returned by the request should be 500\", () => {\r",
+                  "    pm.expect(pm.response.code).to.eql(500);\r",
+                  "})\r",
+                  "\r",
+                  "// pm.test(\"Response body should contain the correct message\", () => {\r",
+                  "//     pm.expect(api_response.message).to.eql(\"Status code '2000' is not supported\")\r",
+                  "// })"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/http/500",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "http",
+                "500"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Custom HTTP Response",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Positive Test Cases",
+                  "",
+                  "const api_response = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code returned by the request should be 404\", () => {",
+                  "    pm.expect(pm.response.code).to.eql(404);",
+                  "})",
+                  "",
+                  "",
+                  "// pm.test(\"Response status returned after hitting the request endpoint should be 200\", () => {",
+                  "//     pm.expect(api_response.status).to.eql(200);",
+                  "// })",
+                  "",
+                  "// pm.test(\"Response Message returned after hitting the request endpoint should be OK\", () => {",
+                  "//     pm.expect(api_response.message).to.eql(\"OK\");",
+                  "// })",
+                  "",
+                  "",
+                  "// Negative Test Cases",
+                  "",
+                  "// pm.test(\"Status code returned by the request should be 500\", () => {",
+                  "//     pm.expect(pm.response.code).to.eql(500);",
+                  "// })",
+                  "",
+                  "// pm.test(\"Response body should contain the correct message\", () => {",
+                  "//     pm.expect(api_response.message).to.eql(\"Status code '2000' is not supported\")",
+                  "// })"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/http/404/Hello_Deb",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "http",
+                "404",
+                "Hello_Deb"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth Flow",
+      "item": [
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code from login api response is 200\", () => {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "})\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"AccessToken\", apiResponse.accessToken);\r",
+                  "pm.environment.set(\"RefreshToken\", apiResponse.refreshToken);\r",
+                  "\r",
+                  "console.log(\"The AccessToken generated from the response is : \", apiResponse.accessToken)\r",
+                  "\r",
+                  "console.log(\"The RefreshToken generated from the response is : \", apiResponse.refreshToken)\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"michaelw\",\r\n    \"password\": \"michaelwpass\",\r\n    \"expiresInMins\": 50 // optional, defaults to 60\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/auth/login",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login with the specified endpoint and storing the AccessToken, RefreshToken & UserId in our environment by automating our post-response script so that we can chain in our next response."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current Auth User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.equal(200);\r",
+                  "})\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"UserId\", apiResponse.id);\r",
+                  "console.log(\"The UserId generated from the response is : \", apiResponse.id)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/auth/me",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "providing accessToken in bearer in Authorization from the AccessToken we got from our previous request.\n\nThe response will generate the the current user details which we logged in along with the id in json."
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh auth session",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "})\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"RefreshToken\", apiResponse.refreshToken);\r",
+                  "console.log(\"The RefreshToken generated frommthe response is : \", apiResponse.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"refreshToken\": \"{{RefreshToken}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/auth/refresh",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            },
+            "description": "Extend the session and create a new access token without username and password. Tokens can also be passed using cookies."
+          },
+          "response": []
+        }
+      ],
+      "description": "The **auth** endpoint provides details about the user authentication and authorization and refresh tokens.  \n  \nWe can use any user's credentials from [dummyjson.com/users](https://dummyjson.com/users). Tokens are returned in the response and set as cookies."
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "});\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.test(\"Products generated are more than 5\",() => {\r",
+                  "pm.expect(apiResponse.products.length).to.be.greaterThan(5);\r",
+                  "})\r",
+                  "\r",
+                  "pm.environment.set(\"ProductId\", apiResponse.products[1].id);\r",
+                  "console.log(\"The ProductId generaated from the response is: \", apiResponse.products[1].id);\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            },
+            "description": "By default we will get 30 items.\n\nI had automate my test script in post-response script we will extract product id and store it in environment so that I can use the variable value dynamically and can chain for my next responses.  \n  \nAlso we need to pass the bearer token in authorization tab."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/{{ProductId}}",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{ProductId}}"
+              ]
+            },
+            "description": "We will pass the productId captured with automated post response script which is saved in the environment.\n\nWe will get the info of the single product, here we will pass the ProductId dynamically in the api endpoint.  \n  \nAlso we need to pass the bearer token in authorization tab."
+          },
+          "response": []
+        },
+        {
+          "name": "Search products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/search?q=lipstick",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "lipstick"
+                }
+              ]
+            },
+            "description": "We can search a product with this respective endpoint, and we can pass key as q and value (products ot title) as key-value pair as Query Params.\n\nlike {{BaseUrl}}/products/search -- is the endpoint  \nq= lipstick ---- is the query params.\n\nso full endpoint becomes -- {{BaseUrl}}/products/search?q=lipstick"
+          },
+          "response": []
+        },
+        {
+          "name": "Limit & Skip Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/?limit=8&skip=10&select=title,price",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "0",
+                  "description": "to get all items\n",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "8",
+                  "description": "to limit results for pagination.",
+                  "type": "text"
+                },
+                {
+                  "key": "skip",
+                  "value": "10",
+                  "description": "first 10 items will get skipped",
+                  "type": "text"
+                },
+                {
+                  "key": "select",
+                  "value": "title,price",
+                  "description": "select as query params with comma-separated values to select specific data",
+                  "type": "text"
+                }
+              ]
+            },
+            "description": "You can pass limit and skip params to limit and skip the results for pagination, and use limit=0 to get all items.\n\nYou can pass select as query params with comma-separated values to select specific data"
+          },
+          "response": []
+        },
+        {
+          "name": "Sort products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/?sortBy=title&order=desc",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "sortBy",
+                  "value": "title",
+                  "description": "sort by is the key and the value could be field name"
+                },
+                {
+                  "key": "order",
+                  "value": "desc",
+                  "description": "the value could be either asc or desc"
+                }
+              ]
+            },
+            "description": "You can pass sortBy and order params to sort the results, sortBy should be field name and order should be \"asc\" or \"desc\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get all products categories",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/categories",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "categories"
+              ]
+            },
+            "description": "You can pass sortBy and order params to sort the results, sortBy should be field name and order should be \"asc\" or \"desc\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get products categories list",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.test(\"Category list should be more than 1\", () => {\r",
+                  "pm.expect(apiResponse.length).to.be.greaterThan(1);\r",
+                  "})"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/category-list",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "category-list"
+              ]
+            },
+            "description": "You can pass sortBy and order params to sort the results, sortBy should be field name and order should be \"asc\" or \"desc\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get products by a category",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.test(\"Category list should be more than 1\", () => {\r",
+                  "pm.expect(apiResponse.products.length).to.be.greaterThan(1);\r",
+                  "})"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/category/laptops",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "category",
+                "laptops"
+              ]
+            },
+            "description": "You can pass sortBy and order params to sort the results, sortBy should be field name and order should be \"asc\" or \"desc\""
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code returned from the Api Response is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is Created\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"Created\");\r",
+                  "});\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"ProductId\", apiResponse.id);\r",
+                  "console.log(\"The ProductId generated from the response is successfully stored in the environment is : \", apiResponse.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"title\": \"Nivia Storm Football\",\r\n\t\"description\": \"The Nivia Storm Football is a very authentic football it looks like volleyball, and when u will give a header it will feel like stone\",\r\n\t\"category\": \"football\",\r\n\t\"price\": 15,\r\n\t\"discountPercentage\": 2.12,\r\n\t\"rating\": 4.64,\r\n\t\"stock\": 20,\r\n\t\"tags\": [\r\n\t\t\"football\",\r\n\t\t\"stone\"\r\n\t]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/products/add",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "add"
+              ]
+            },
+            "description": "Adding a new product will not add it into the server.  \nIt will simulate a POST request and will return the new created product with a new id."
+          },
+          "response": []
+        },
+        {
+          "name": "Update an existing product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any product, the id generated is only for the api call, it doesn't really store the product in the database. So, when we try to update a product with a non-existing id, the api returns a 200 status code with a message \"Product with id '195' not found\"\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"ProductId\", apiResponse.id);\r",
+                  "console.log(\"The ProductId generated from the response is successfully stored in the environment is : \", apiResponse.id);\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.unset(\"ProductId\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"title\": \"Adidas Trionda\",\r\n\t\"price\": 35,\r\n\t\"stock\": 41\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/products/3",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "3"
+              ]
+            },
+            "description": "Updating a product will not update it into the server.  \nIt will simulate a PUT/PATCH request and will return updated product with modified data."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any product, the id generated is only for the api call, it doesn't really store the product in the database. So, when we try to update a product with a non-existing id, the api returns a 200 status code with a message \"Product with id '195' not found\"\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.environment.unset(\"ProductId\")\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/products/{{ProductId}}",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{ProductId}}"
+              ]
+            },
+            "description": "Deleting a product will not delete it into the server.  \nIt will simulate a DELETE request and will return deleted product with isDeleted & deletedOn keys."
+          },
+          "response": []
+        }
+      ],
+      "description": "The **products** endpoint provides a comprehensive dataset of sample product information, including details like names, prices, descriptions, images, and categories, ideal for testing and prototyping e-commerce applications."
+    },
+    {
+      "name": "Carts",
+      "item": [
+        {
+          "name": "Get all carts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.expect(pm.response.code).to.eql(200);",
+                  "});",
+                  "",
+                  "const apiResponse = pm.response.json();",
+                  "pm.test(\"Carts generated are more than 5\", () => {",
+                  "    pm.expect(apiResponse.carts.length).to.be.greaterThan(5);",
+                  "});",
+                  "",
+                  "pm.environment.set(\"ProductId\", apiResponse.carts[0].products[1].id);",
+                  "console.log(\"The ProductId generated from the response is: \", apiResponse.carts[0].products[1].id);",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/carts",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a single cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/carts/1",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get carts by a user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/carts/{{UserId}}",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts",
+                "{{UserId}}"
+              ]
+            },
+            "description": "getting carts by user id\\[dynamic or static\\]"
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code returned from the Api Response is 201\", () => {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is Created\", () => {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"Created\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"The Quantity are more than 0\",() => {\r",
+                  "    pm.expect(apiResponse.products[0].quantity).to.greaterThan(0);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.environment.set(\"cartId\", apiResponse.id);\r",
+                  "console.log(\"The cartId generated from the response is successfully stored in the environment is : \", apiResponse.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\": 5,\r\n    \"products\": [\r\n        {\r\n            \"id\": 69,\r\n            \"quantity\": \"5\"\r\n        },\r\n        {\r\n            \"id\": 163,\r\n            \"quantity\": 12\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/carts/add",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts",
+                "add"
+              ]
+            },
+            "description": "Adding a new cart will not add it into the server.  \nIt will simulate a POST request and will return the new created cart with a new id.\n\n  \nYou can provide a userId and array of products as objects, containing productId & quantity."
+          },
+          "response": []
+        },
+        {
+          "name": "Update an existing cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any product, the id generated is only for the api call, it doesn't really store the product in the database. So, when we try to update a product with a non-existing id, the api returns a 200 status code with a message \"Product with id '195' not found\"\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"ProductId\", apiResponse.id);\r",
+                  "console.log(\"The ProductId generated from the response is successfully stored in the environment is : \", apiResponse.id);\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    //  to include old products when updating\r\n\t// \"merge\": true\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"quantity\": 6,\r\n            \"price\" : 8.99\r\n\t\t}\r\n\t]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/carts/1",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts",
+                "1"
+              ]
+            },
+            "description": "Updating a cart will not update it into the server.  \nIt will simulate a PUT/PATCH request and will return updated cart with modified data.\n\nPass \"merge: true\" to include old products when updating.  \n\nYou can provide a userId and array of products as objects, containing productId & quantity."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an existing cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any cart, the id generated is only for the api call, it doesn't really store the cart in the database. So, when we try to update a cart with a non-existing id, the api returns a 200 status code with a cart with id '209' not found\"\r",
+                  "// like {{BaseUrl}}/carts/{{cartId}}\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.environment.unset(\"cartId\");\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/carts/1",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "carts",
+                "1"
+              ]
+            },
+            "description": "Deleting a cart will not delete it into the server.  \nIt will simulate a DELETE request and will return deleted cart with isDeleted & deletedOn keys."
+          },
+          "response": []
+        }
+      ],
+      "description": "The **carts** endpoint offers a dataset of sample shopping cart data, including details like cart items, quantities, prices, and user IDs, useful for testing and prototyping e-commerce functionalities such as cart management and checkout processes."
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get all users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.expect(pm.response.code).to.eql(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "StartFragmentBy default you will get 30 items, use [Limit and skip](https://dummyjson.com/docs/users#users-limit_skip) to paginate through all items.EndFragment"
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code from login api response is 200\", () => {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "})\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"AccessToken\", apiResponse.accessToken);\r",
+                  "pm.environment.set(\"RefreshToken\", apiResponse.refreshToken);\r",
+                  "\r",
+                  "console.log(\"The AccessToken generated from the response is : \", apiResponse.accessToken)\r",
+                  "\r",
+                  "console.log(\"The RefreshToken generated from the response is : \", apiResponse.refreshToken)\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/auth/login",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "You can use any user's credentials from [dummyjson.com/users](https://dummyjson.com/users). Tokens are returned in the response and set as cookies."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current Auth User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.equal(200);\r",
+                  "})\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"UserId\", apiResponse.id);\r",
+                  "console.log(\"The UserId generated from the response is : \", apiResponse.id)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/auth/me",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "providing accessToken in bearer in Authorization from the AccessToken we got from our previous request.\n\nThe response will generate the the current user details which we logged in along with the id in json."
+          },
+          "response": []
+        },
+        {
+          "name": "Get a single user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/{{UserId}}",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "{{UserId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/search?q=John",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "John"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/filter?key=hair.color&value=Brown",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "filter"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "hair.color"
+                },
+                {
+                  "key": "value",
+                  "value": "Brown"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sort & Order Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users?sortBy=firstName&order=desc",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "sortBy",
+                  "value": "firstName"
+                },
+                {
+                  "key": "order",
+                  "value": "desc"
+                }
+              ]
+            },
+            "description": "You can pass sortBy and order params to sort the results, sortBy should be field name and order should be \"asc\" or \"desc\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get user's carts by user id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "/* getting carts of user with id[static / dynamic] */\r",
+                  "\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/{{UserId}}/carts",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "{{UserId}}",
+                "carts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get user's posts by user id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/{{UserId}}/posts",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "{{UserId}}",
+                "posts"
+              ]
+            },
+            "description": "getting carts of user with id"
+          },
+          "response": []
+        },
+        {
+          "name": "Add a new cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code returned from the Api Response is 201\", () => {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is Created\", () => {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"Created\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "\r",
+                  "// pm.test(\"The Quantity are more than 0\",() => {\r",
+                  "//     pm.expect(apiResponse.products[0].quantity).to.greaterThan(0);\r",
+                  "// });\r",
+                  "\r",
+                  "\r",
+                  "pm.environment.set(\"UserId\", apiResponse.id);\r",
+                  "console.log(\"The UserId generated from the response is successfully stored in the environment is : \", apiResponse.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Debojyoti\",\r\n    \"lastName\": \"Das\",\r\n    \"age\": 26\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/users/add",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "add"
+              ]
+            },
+            "description": "Adding a new user will not add it into the server.  \nIt will simulate a POST request and will return the new created user with a new id."
+          },
+          "response": []
+        },
+        {
+          "name": "Update an existing user.",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any product, the id generated is only for the api call, it doesn't really store the product in the database. So, when we try to update a product with a non-existing id, the api returns a 200 status code with a message \"Product with id '195' not found\"\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  "const apiResponse = pm.response.json();\r",
+                  "pm.environment.set(\"ProductId\", apiResponse.id);\r",
+                  "console.log(\"The ProductId generated from the response is successfully stored in the environment is : \", apiResponse.id);\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    //  to include old products when updating\r\n\t// \"merge\": true\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"quantity\": 6,\r\n            \"price\" : 8.99\r\n\t\t}\r\n\t]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/users/3",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "3"
+              ]
+            },
+            "description": "Updating a user will not update it into the server.  \nIt will simulate a PUT/PATCH request and will return updated user with modified data."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an existing user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// As this are demo apis so when we add any cart, the id generated is only for the api call, it doesn't really store the cart in the database. So, when we try to update a cart with a non-existing id, the api returns a 200 status code with a cart with id '209' not found\"\r",
+                  "// like {{BaseUrl}}/carts/{{cartId}}\r",
+                  "\r",
+                  "// with existing id in the database of dummyJSON API\r",
+                  "\r",
+                  "pm.test(\"Status code returned from the Api Request is 200\", function () {\r",
+                  "    pm.expect(pm.response.code).to.eql(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"The Response Status should be returned from the Api Request is OK\", function () {\r",
+                  "    pm.expect(pm.response.status).to.eql(\"OK\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.environment.unset(\"cartId\");\r",
+                  "\r",
+                  "// If we pass the id generated in the previous add request we should get a 200 status code. If we pass a non-existing id we should get a 404 status code.   \r",
+                  "\r",
+                  "// with non-existing id ---\r",
+                  "\r",
+                  "// pm.test(\"Status code returned from the Api Request is 404\", function () {\r",
+                  "//     pm.response.to.have.status(404);\r",
+                  "// });\r",
+                  "\r",
+                  "// pm.test(\"Status returned from the Api Request is Not Found\", function () {\r",
+                  "//     pm.expect(pm.response.status).to.eql(\"Not Found\");\r",
+                  "// });\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/users/201",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "users",
+                "201"
+              ]
+            },
+            "description": "Deleting a user will not delete it into the server.  \nIt will simulate a DELETE request and will return deleted user with isDeleted & deletedOn keys."
+          },
+          "response": []
+        }
+      ],
+      "description": "The **users** endpoint provides a versatile dataset of sample user information and related data like carts, posts, and todos, making it ideal for testing and prototyping user management functionalities in web applications"
+    }
+  ]
+}

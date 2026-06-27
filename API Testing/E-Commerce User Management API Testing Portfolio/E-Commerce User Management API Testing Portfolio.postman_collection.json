@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "ad2663ab-6afd-4262-9fea-082f27976ace",
+    "name": "E-Commerce User Management API Testing Portfolio",
+    "description": "Production-grade automated test collection for tracking authentication and profile CRUD modules on DummyJSON and ReqRes platforms.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39290336",
+    "_collection_link": "https://go.postman.co/collection/39290336-ad2663ab-6afd-4262-9fea-082f27976ace?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "API 1: DummyJSON Authentication & Users",
+      "item": [
+        {
+          "name": "POST /auth/login - Valid Credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('HTTP Status Code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response performance window is below 2000ms', function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});",
+                  "",
+                  "pm.test('Token parameter extracted and valid', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('token');",
+                  "    pm.environment.set('auth_token', jsonData.token);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"emilys\",\n  \"password\": \"emilyspass\"\n}"
+            },
+            "url": {
+              "raw": "{{dummyjson_url}}/auth/login",
+              "host": [
+                "{{dummyjson_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Validates successful token issuance and session model properties."
+          },
+          "response": []
+        },
+        {
+          "name": "POST /auth/login - SQL Injection Security Check",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('HTTP Status Code is 400 Bad Request', function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test('No system data leaks detected', function () {",
+                  "    var responseBody = pm.response.text();",
+                  "    pm.expect(responseBody).to.not.include('SQL Server');",
+                  "    pm.expect(responseBody).to.not.include('exception');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"' OR 1=1 --\",\n  \"password\": \"arbitrary_pass\"\n}"
+            },
+            "url": {
+              "raw": "{{dummyjson_url}}/auth/login",
+              "host": [
+                "{{dummyjson_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /users - Fetch Directory Array",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('HTTP Status Code is 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Verify structural pagination object envelopes', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.all.keys('users', 'total', 'skip', 'limit');",
+                  "    pm.expect(jsonData.users).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{dummyjson_url}}/users",
+              "host": [
+                "{{dummyjson_url}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API 2: ReqRes Pagination & Mutation",
+      "item": [
+        {
+          "name": "GET /api/users - Paginated Profile Grid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('HTTP Status Code is 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const userSchema = {",
+                  "    'type': 'object',",
+                  "    'required': ['id', 'email', 'first_name', 'last_name'],",
+                  "    'properties': {",
+                  "        'id': { 'type': 'number' },",
+                  "        'email': { 'type': 'string' },",
+                  "        'first_name': { 'type': 'string' },",
+                  "        'last_name': { 'type': 'string' }",
+                  "    }",
+                  "};",
+                  "",
+                  "pm.test('Verify JSON structural schema maps', function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.response.to.have.jsonSchema(userSchema);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{reqres_url}}/api/users?page=2",
+              "host": [
+                "{{reqres_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/users/2 - Secure Deletion Pipeline",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('HTTP Status Code is 204 No Content compliance', function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.test('Verify payload string context length is vacant', function () {",
+                  "    pm.expect(pm.response.text()).to.equal('');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{reqres_url}}/api/users/2",
+              "host": [
+                "{{reqres_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "dummyjson_url",
+      "value": "https://dummyjson.com"
+    },
+    {
+      "key": "reqres_url",
+      "value": "https://reqres.in"
+    },
+    {
+      "key": "auth_token",
+      "value": ""
+    }
+  ]
+}
