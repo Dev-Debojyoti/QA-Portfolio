@@ -9,7 +9,7 @@ This repository showcases my practical experience in Manual Testing, API Testing
 Screenshots
 ==================================================================================================================================================
 
-<img width="1000" height="750" alt="WhatsApp Image 2026-07-06 at 2 48 53 AM" src="https://github.com/user-attachments/assets/95ce445a-4c2a-4dcc-8ca3-2b23b5cc7949" />
+<img width="600" height="1000" alt="WhatsApp Image 2026-07-06 at 2 48 53 AM" src="https://github.com/user-attachments/assets/95ce445a-4c2a-4dcc-8ca3-2b23b5cc7949" />
 
 
 
