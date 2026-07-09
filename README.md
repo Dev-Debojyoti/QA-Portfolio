@@ -9,15 +9,19 @@ This repository showcases my practical experience in Manual Testing, API Testing
 Screenshots
 ==================================================================================================================================================
 
-<img width="600" height="1000" alt="WhatsApp Image 2026-07-06 at 2 48 53 AM" src="https://github.com/user-attachments/assets/95ce445a-4c2a-4dcc-8ca3-2b23b5cc7949" />
 
+<img width="1316" height="514" alt="Screenshot 2026-07-09 135818" src="https://github.com/user-attachments/assets/5692582f-02df-4fd0-a6d5-fb4251756fac" />
 
 
 <img width="1200" height="650" alt="Screenshot 2026-07-06 024617" src="https://github.com/user-attachments/assets/d61f2509-8c54-4553-b331-c2abf49ed401" />
 
 
+<img width="600" height="1000" alt="WhatsApp Image 2026-07-06 at 2 48 53 AM" src="https://github.com/user-attachments/assets/95ce445a-4c2a-4dcc-8ca3-2b23b5cc7949" />
 
-<img width="1316" height="514" alt="Screenshot 2026-07-09 135818" src="https://github.com/user-attachments/assets/5692582f-02df-4fd0-a6d5-fb4251756fac" />
+
+<img width="1504" height="816" alt="Screenshot 2026-07-06 031611" src="https://github.com/user-attachments/assets/f2661f45-070c-4083-a439-3fd48d88c427" />
+
+
 
 📌 Skills Demonstrated
 ====================================================================================================================================================
